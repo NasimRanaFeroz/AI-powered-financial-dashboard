@@ -1,7 +1,7 @@
 import {
   CalendarDaysIcon,
   Squares2X2Icon,
-  DocumentDuplicateIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import profile from "../assets/profile.png";
@@ -15,7 +15,7 @@ const Header = () => {
 
   const menuItems = [
     { id: "dashboard", name: "Dashboard", icon: Squares2X2Icon },
-    { id: "spreadsheet", name: "Spreadsheet", icon: DocumentDuplicateIcon },
+    { id: "spreadsheet", name: "Input Field", icon: MagnifyingGlassIcon },
   ];
 
   useEffect(() => {

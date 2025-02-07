@@ -31,7 +31,7 @@ const Sidebar = () => {
             key={month.id}
             id={month.id}
             onClick={() => setSelectedMonth(month.id)}
-            className={`cursor-pointer p-2 ${
+            className={`cursor-pointer p-1 ${
               selectedMonth === month.id ? "font-bold text-[#EF5D1E]" : ""
             }`}
           >
