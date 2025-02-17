@@ -1,10 +1,19 @@
+import PropTypes from "prop-types";
 
-const Main = () => {
+const Main = ({ selectedMenuItem }) => {
   return (
     <div className="bg-[#151A32] text-white flex items-center justify-center">
-        Main
-      </div>
-  )
-}
+      {selectedMenuItem === 'dashboard' ? (
+        <div>dashboard</div>
+      ) : (
+        <div>input</div>
+      )}
+    </div>
+  );
+};
 
-export default Main
+Main.propTypes = {
+  selectedMenuItem: PropTypes.string,
+};
+
+export default Main;

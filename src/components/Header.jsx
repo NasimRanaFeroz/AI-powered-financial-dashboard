@@ -5,11 +5,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import profile from "../assets/profile.png";
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({ onMenuItemChange }) => {
   const [balance] = useState(69420);
   const [name] = useState("Hwang Hyunjin");
-  const [role] = useState("Lead Visual");
+  const [role] = useState("Basic User");
   const [currentDate, setCurrentDate] = useState("");
   const [selected, setSelected] = useState("dashboard");
 
@@ -29,6 +30,11 @@ const Header = () => {
     setCurrentDate(today.toLocaleDateString("en-US", options));
   }, []);
 
+  const handleMenuItemClick = (menuItemID) => {
+    setSelected(menuItemID);
+    onMenuItemChange(menuItemID);
+  };
+
   return (
     <div className="col-span-2 bg-[#0B1020] text-white flex items-center justify-between p-4">
       {/* Left Section */}
@@ -45,7 +51,7 @@ const Header = () => {
             <div
               key={item.id}
               className="flex items-center cursor-pointer"
-              onClick={() => setSelected(item.id)}
+              onClick={() => handleMenuItemClick(item.id)}
             >
               <item.icon
                 className={`w-6 h-6 ${
@@ -89,6 +95,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  onMenuItemChange: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -62,14 +62,17 @@ const RightPanel = () => {
             Predict Spending
           </button>
         </div>
-        {showPrediction && <div className="">Predicted spending: $ {spendMoney}</div>}
+        {showPrediction && (
+          <div className="">Predicted spending: $ {spendMoney}</div>
+        )}
       </div>
-      {!showPrediction && <div className="text-sm font-semibold p-2 rounded-xl text-center">
+      <div className="text-sm font-semibold p-2 rounded-xl text-center">
         Money Empowers Freedom
-      </div>}
+      </div>
     </div>
   );
 };
+
 ProgressBar.propTypes = {
   current: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
