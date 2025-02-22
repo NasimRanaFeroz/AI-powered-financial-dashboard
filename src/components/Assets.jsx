@@ -1,7 +1,7 @@
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Filler } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Filler);
 
 const DonutChart = () => {
   const data = {
@@ -27,6 +27,9 @@ const DonutChart = () => {
             return `$${tooltipItem.raw.toLocaleString()}`; // Format numbers
           },
         },
+      },
+      filler: {
+        propagate: false,
       },
     },
     cutout: "70%", // Create the donut effect

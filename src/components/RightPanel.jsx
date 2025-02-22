@@ -3,10 +3,10 @@ import spend from "../assets/spend.jpg";
 import { useState } from "react";
 
 const ProgressBar = ({ current, total }) => {
-  const progress = (current / total) * 100;
+  const progress = total > 0 ? (current / total) * 100 : 0;
 
   return (
-    <div className="w-full bg-[#0B1020] rounded-full h-3 shadow-inner">
+    <div className="w-full bg-[#0B1020] rounded-full h-3 shadow-inner overflow-hidden">
       <div
         className="bg-[#5622B7] h-full rounded-full transition-all duration-300 ease-in-out"
         style={{ width: `${progress}%` }}
@@ -15,9 +15,9 @@ const ProgressBar = ({ current, total }) => {
   );
 };
 
-const RightPanel = () => {
+const RightPanel = ({ incomeGoal }) => {
   const currentValue = 690;
-  const totalValue = 4200;
+  const totalValue = Number(incomeGoal);
   const progress = (currentValue / totalValue) * 100;
   const [spendMoney] = useState(420);
 
@@ -76,6 +76,10 @@ const RightPanel = () => {
 ProgressBar.propTypes = {
   current: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
+};
+
+RightPanel.propTypes = {
+  incomeGoal: PropTypes.number.isRequired,
 };
 
 export default RightPanel;

@@ -11,7 +11,9 @@ import {
   faBus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Main = ({ selectedMenuItem }) => {
+const Main = ({ selectedMenuItem, onBalanceChange, onIncomeGoalChange }) => {
+  const netWorth = 69420;
+
   return (
     <div className="bg-[#0B1020] pl-6">
       {selectedMenuItem === "dashboard" ? (
@@ -24,7 +26,7 @@ const Main = ({ selectedMenuItem }) => {
               }}
             >
               <p className="text-white text-sm font-medium">Total Net Worth</p>
-              <h2 className="text-white text-2xl font-bold">$609,420</h2>
+              <h2 className="text-white text-2xl font-bold">${netWorth}</h2>
             </div>
             <div className="flex flex-col pl-4 bg-[#151A32] mx-6 px-4 rounded-lg">
               <div className="text-white text-sm font-medium px-2 pt-2">
@@ -113,7 +115,7 @@ const Main = ({ selectedMenuItem }) => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center text-white mt-6">
+        <div className="flex flex-col items-center justify-center text-white">
           <div className="flex m-4 gap-8">
             <div className="flex flex-col items-center justify-center bg-[#151A32] p-6 rounded-xl">
               <p className="font-semibold">Set Available balance</p>
@@ -122,18 +124,13 @@ const Main = ({ selectedMenuItem }) => {
                 placeholder="Input an amount"
                 className="mt-2 p-2 rounded bg-white text-black"
               />
-              <button className="mt-2 p-2 bg-[#EF5D1E] rounded w-full hover:bg-[#D94E18] text-white text-base font-semibold">
-                Submit
-              </button>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-[#151A32] p-6 rounded-xl">
-              <p className="font-semibold">Set Net Worth</p>
-              <input
-                type="number"
-                placeholder="Input an amount"
-                className="mt-2 p-2 rounded text-black bg-white"
-              />
-              <button className="mt-2 p-2 bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-semibold rounded w-full">
+              <button
+                className="mt-2 p-2 bg-[#EF5D1E] rounded w-full hover:bg-[#D94E18] text-white text-base font-semibold"
+                onClick={() => {
+                  const input = document.querySelector('input[type="number"]');
+                  onBalanceChange(Number(input.value));
+                }}
+              >
                 Submit
               </button>
             </div>
@@ -144,7 +141,13 @@ const Main = ({ selectedMenuItem }) => {
                 placeholder="Input an amount"
                 className="mt-2 p-2 rounded bg-white text-black"
               />
-              <button className="mt-2 p-2 bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-semibold rounded w-full">
+              <button
+                className="mt-2 p-2 bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-semibold rounded w-full"
+                onClick={() => {
+                  const input = document.querySelectorAll('input[type="number"]')[1];
+                  onIncomeGoalChange(Number(input.value));
+                }}
+              >
                 Submit
               </button>
             </div>
@@ -154,14 +157,14 @@ const Main = ({ selectedMenuItem }) => {
               <div className="font-semibold">Add spending</div>
               <div>
                 <input
-                    type="number"
-                    placeholder="Input an amount"
+                  type="number"
+                  placeholder="Input an amount"
                   className="p-2 rounded bg-white text-black"
                 />
               </div>
               <div>
-                <select className="p-2 rounded bg-white text-black">
-                  <option value="" disabled selected>
+                <select className="p-2 rounded bg-white text-black" defaultValue="">
+                  <option value="" disabled>
                     Select a type
                   </option>
                   <option value="option1">Housing</option>
@@ -179,14 +182,14 @@ const Main = ({ selectedMenuItem }) => {
               <div className="font-semibold"> Add income</div>
               <div className="ml-3">
                 <input
-                    type="number"
-                    placeholder="Input an amount"
+                  type="number"
+                  placeholder="Input an amount"
                   className=" p-2 rounded bg-white text-black"
                 />
               </div>
               <div>
-                <select className="p-2 pr-5 rounded bg-white text-black">
-                  <option value="" disabled selected>
+                <select className="p-2 pr-5 rounded bg-white text-black" defaultValue="">
+                  <option value="" disabled>
                     Select a type
                   </option>
                   <option value="option1">Salary</option>
@@ -200,28 +203,31 @@ const Main = ({ selectedMenuItem }) => {
                 </button>
               </div>
             </div>
-            <div className="bg-[#151A32] p-6 rounded-xl flex items-center gap-6">
-                <div className="font-semibold">Add asset</div>
-                <div className="ml-7">
-              <input
-                    type="number"
-                    placeholder="Input an amount"
-                className=" p-2 rounded bg-white text-black"
-                  /></div>
-                <div>
-              <select className=" p-2 pr-5 rounded bg-white text-black">
-                <option value="" disabled selected>
-                  Select a type
-                </option>
-                <option value="option1">Land</option>
-                <option value="option2">Business</option>
-                <option value="option3">Stock</option>
-                <option value="option4">Others</option>
-                  </select></div>
-                <div>
-              <button className="p-2 px-6 bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-semibold rounded">
-                Submit
-              </button></div>
+            <div className="bg-[#151A32] p-6 rounded-xl flex items-center gap-6 mb-13">
+              <div className="font-semibold">Add asset</div>
+              <div className="ml-7">
+                <input
+                  type="number"
+                  placeholder="Input an amount"
+                  className=" p-2 rounded bg-white text-black"
+                />
+              </div>
+              <div className="">
+                <select className=" p-2 pr-5 rounded bg-white text-black" defaultValue="">
+                  <option value="" disabled>
+                    Select a type
+                  </option>
+                  <option value="option1">Land</option>
+                  <option value="option2">Business</option>
+                  <option value="option3">Stock</option>
+                  <option value="option4">Others</option>
+                </select>
+              </div>
+              <div>
+                <button className="p-2 px-6 bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-semibold rounded">
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -232,6 +238,9 @@ const Main = ({ selectedMenuItem }) => {
 
 Main.propTypes = {
   selectedMenuItem: PropTypes.string,
+  onBalanceChange: PropTypes.func,
+  handleNetWorthChange: PropTypes.func,
+  onIncomeGoalChange: PropTypes.func,
 };
 
 export default Main;

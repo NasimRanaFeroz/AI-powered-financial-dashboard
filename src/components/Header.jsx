@@ -7,8 +7,7 @@ import { useState, useEffect } from "react";
 import profile from "../assets/profile.png";
 import PropTypes from 'prop-types';
 
-const Header = ({ onMenuItemChange }) => {
-  const [balance] = useState(69420);
+const Header = ({ onMenuItemChange, availableBalance }) => {
   const [name] = useState("Hwang Hyunjin");
   const [role] = useState("Basic User");
   const [currentDate, setCurrentDate] = useState("");
@@ -41,7 +40,7 @@ const Header = ({ onMenuItemChange }) => {
       <div>
         <p className="text-md text-gray-400">Personal Finance Tracker</p>
         <p className="text-3xl font-bold">Available Balance</p>
-        <p className="text-3xl text-blue-400 font-bold">${balance}</p>
+        <p className="text-3xl text-blue-400 font-bold">${availableBalance}</p>
       </div>
 
       {/* Center Section */}
@@ -99,6 +98,7 @@ const Header = ({ onMenuItemChange }) => {
 
 Header.propTypes = {
   onMenuItemChange: PropTypes.func.isRequired,
+  availableBalance: PropTypes.number.isRequired,
 };
 
 export default Header;

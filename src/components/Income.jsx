@@ -7,6 +7,7 @@ import {
   PointElement,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
 ChartJS.register(
@@ -14,9 +15,11 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
+  Legend,
   Tooltip,
-  Legend
+  Filler
 );
+
 
 const LineChart = () => {
   const data = {
@@ -55,7 +58,7 @@ const LineChart = () => {
         borderColor: "#36A2EB",
         borderDash: [5, 5],
         backgroundColor: "rgba(54, 162, 235, 0.2)",
-        fill: false,
+        fill: true,
         tension: 0.4,
       },
     ],
