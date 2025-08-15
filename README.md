@@ -60,13 +60,8 @@ npm run dev
 4. **Open your browser**
 Navigate to `http://localhost:5173` to see the application.
 
-### Build for Production
 
-```bash
-npm run build
-
-
-## 📱 Usage
+### 📱 Usage
 
 1. **Getting Started**
    - Visit the [live demo](https://budget-buddy-beta-version.onrender.com/)
