@@ -74,7 +74,7 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
   };
 
   return (
-    <div className="col-span-2 bg-[#0B1020] text-white flex items-center justify-between p-4">
+    <div className="col-span-2 bg-[#0B1020] text-white flex items-center justify-between p-4  ml-24">
       {/* Left Section */}
       <div>
         <p className="text-md text-gray-400">Personal Finance Tracker</p>
@@ -114,15 +114,13 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
 
       {/* Right Section */}
       <div className="flex gap-4 items-center">
-        {/* User Info */}
         <div className="text-right">
           <p className="text-xl font-bold">{name}</p>
           <p className="text-gray-400">{role}</p>
         </div>
 
-        {/* Avatar */}
         <button
-          className="avatar"
+          className="avatar hover:cursor-pointer"
           onClick={() => {
             handleAvatarClick();
             handleLoginPage();
@@ -210,7 +208,7 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
                 </button>
               </div>
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <button
                   className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full flex items-center justify-center"
                   type="button"
@@ -218,7 +216,7 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
                   <img src={google} alt="" className="w-6 h-6 mr-2" />
                   Or sign in with Google
                 </button>
-              </div>
+              </div> */}
 
               <div className="text-center">
                 <p className="text-sm">
@@ -311,7 +309,7 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
                 </button>
               </div>
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <button
                   className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full flex items-center justify-center"
                   type="button"
@@ -319,7 +317,7 @@ const Header = ({ onMenuItemChange, availableBalance }) => {
                   <img src={google} alt="" className="w-6 h-6 mr-2" />
                   Or sign up with Google
                 </button>
-              </div>
+              </div> */}
 
               <div className="text-center">
                 <p className="text-sm">

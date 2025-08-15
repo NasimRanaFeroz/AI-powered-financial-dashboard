@@ -22,21 +22,21 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="bg-[#0B1020] h-screen">
-    <div className="grid grid-rows-[0.5fr_3.5fr] grid-cols-[0.5fr_3.5fr_1fr] gap-2  p-4 bg-[#0B1020] ">
-      <Sidebar />
-      <Header
-        onMenuItemChange={handleMenuItemChange}
-        availableBalance={availableBalance}
-      />
-      <MainComponent
-        selectedMenuItem={selectedMenuItem}
-        onBalanceChange={handleBalanceChange}
-        onIncomeGoalChange={handleIncomeGoalChange}
-      />
-      <RightPanel incomeGoal={incomeGoal} />
+    <div className="bg-[#0B1020] min-w-[1800px] max-w-[2000px] min-h-screen m-auto">
+      <div className="grid grid-rows-[0.5fr_3.5fr] grid-cols-[0.5fr_3.5fr_1fr] gap-2  p-4 bg-[#0B1020] ">
+        <Sidebar />
+        <Header
+          onMenuItemChange={handleMenuItemChange}
+          availableBalance={availableBalance}
+        />
+        <MainComponent
+          selectedMenuItem={selectedMenuItem}
+          onBalanceChange={handleBalanceChange}
+          onIncomeGoalChange={handleIncomeGoalChange}
+        />
+        <RightPanel incomeGoal={incomeGoal} />
       </div>
-      </div>
+    </div>
   );
 };
 

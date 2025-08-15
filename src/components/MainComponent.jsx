@@ -15,7 +15,7 @@ const Main = ({ selectedMenuItem, onBalanceChange, onIncomeGoalChange }) => {
   const netWorth = 69420;
 
   return (
-    <div className="bg-[#0B1020] pl-6">
+    <div className="bg-[#0B1020] pl-6  ml-16">
       {selectedMenuItem === "dashboard" ? (
         <div className="flex flex-col">
           <div className="flex">

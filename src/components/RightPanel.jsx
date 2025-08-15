@@ -19,12 +19,21 @@ const RightPanel = ({ incomeGoal }) => {
   const currentValue = 690;
   const totalValue = Number(incomeGoal);
   const progress = (currentValue / totalValue) * 100;
-  const [spendMoney] = useState(420);
+  //const [spendMoney] = useState(420);
 
   const [showPrediction, setShowPrediction] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showNoData, setShowNoData] = useState(false);
 
   const handlePredictClick = () => {
-    setShowPrediction(true);
+    setShowPrediction(false);
+    setShowNoData(false);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setShowNoData(true);
+    }, 5000);
   };
 
   return (
@@ -56,15 +65,20 @@ const RightPanel = ({ incomeGoal }) => {
         </div>
         <div className="pb-4 flex justify-center">
           <button
-            className="bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-bold py-2 px-4 rounded-xl w-full"
+            className="bg-[#EF5D1E] hover:bg-[#D94E18] text-white text-base font-bold py-2 px-4 rounded-xl w-full disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handlePredictClick}
+            disabled={isLoading}
           >
-            Predict Spending
+            {isLoading ? "Predicting..." : "Predict Spending"}
           </button>
         </div>
-        {showPrediction && (
-          <div className="">Predicted spending: $ {spendMoney}</div>
+        {isLoading && (
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>
+            <span>Loading...</span>
+          </div>
         )}
+        {showNoData && <div className="">No data Found</div>}
       </div>
       <div className="text-sm font-semibold p-2 rounded-xl text-center">
         Money Empowers Freedom
